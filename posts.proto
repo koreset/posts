@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "google/protobuf/timestamp.proto";
 
 service PostService {
     rpc CreatePost(PostRequest) returns (Post){}
@@ -14,5 +15,5 @@ message Post{
     string author = 2;
     string text = 3;
     google.protobuf.Timestamp creationdate = 4;
-    google.protobuf.Timestamp modifieddate = 5;
+    google.protobuf.Timestamp lastmodified = 5;
 }
