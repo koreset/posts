@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+service PostService {
+    rpc CreatePost(PostRequest) returns (Post){}
+}
+
+message PostRequest{
+    string author = 1;
+    string text = 2;
+}
+
+message Post{
+    string id = 1;
+    string author = 2;
+    string text = 3;
+    google.protobuf.Timestamp creationdate = 4;
+    google.protobuf.Timestamp modifieddate = 5;
+}
