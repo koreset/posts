@@ -20,12 +20,74 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='posts.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0bposts.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"+\n\x0bPostRequest\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"\x94\x01\n\x04Post\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x02 \x01(\t\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\x30\n\x0c\x63reationdate\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x0clastmodified\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp22\n\x0bPostService\x12#\n\nCreatePost\x12\x0c.PostRequest\x1a\x05.Post\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0bposts.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x1d\n\x0fPostByIdRequest\x12\n\n\x02id\x18\x01 \x01(\t\"%\n\x13PostByAuthorRequest\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\"+\n\x0bPostRequest\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"\x94\x01\n\x04Post\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x02 \x01(\t\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\x30\n\x0c\x63reationdate\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x0clastmodified\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x1d\n\x05Posts\x12\x14\n\x05posts\x18\x01 \x03(\x0b\x32\x05.Post2\x91\x01\n\x0bPostService\x12#\n\nCreatePost\x12\x0c.PostRequest\x1a\x05.Post\"\x00\x12(\n\x0bGetPostById\x12\x10.PostByIdRequest\x1a\x05.Post\"\x00\x12\x33\n\x10GetPostsByAuthor\x12\x14.PostByAuthorRequest\x1a\x05.Post\"\x00\x30\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
+
+
+_POSTBYIDREQUEST = _descriptor.Descriptor(
+  name='PostByIdRequest',
+  full_name='PostByIdRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='PostByIdRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=48,
+  serialized_end=77,
+)
+
+
+_POSTBYAUTHORREQUEST = _descriptor.Descriptor(
+  name='PostByAuthorRequest',
+  full_name='PostByAuthorRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='author', full_name='PostByAuthorRequest.author', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=79,
+  serialized_end=116,
+)
 
 
 _POSTREQUEST = _descriptor.Descriptor(
@@ -61,8 +123,8 @@ _POSTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=48,
-  serialized_end=91,
+  serialized_start=118,
+  serialized_end=161,
 )
 
 
@@ -120,14 +182,63 @@ _POST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=94,
-  serialized_end=242,
+  serialized_start=164,
+  serialized_end=312,
+)
+
+
+_POSTS = _descriptor.Descriptor(
+  name='Posts',
+  full_name='Posts',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='posts', full_name='Posts.posts', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=314,
+  serialized_end=343,
 )
 
 _POST.fields_by_name['creationdate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _POST.fields_by_name['lastmodified'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_POSTS.fields_by_name['posts'].message_type = _POST
+DESCRIPTOR.message_types_by_name['PostByIdRequest'] = _POSTBYIDREQUEST
+DESCRIPTOR.message_types_by_name['PostByAuthorRequest'] = _POSTBYAUTHORREQUEST
 DESCRIPTOR.message_types_by_name['PostRequest'] = _POSTREQUEST
 DESCRIPTOR.message_types_by_name['Post'] = _POST
+DESCRIPTOR.message_types_by_name['Posts'] = _POSTS
+
+PostByIdRequest = _reflection.GeneratedProtocolMessageType('PostByIdRequest', (_message.Message,), dict(
+  DESCRIPTOR = _POSTBYIDREQUEST,
+  __module__ = 'posts_pb2'
+  # @@protoc_insertion_point(class_scope:PostByIdRequest)
+  ))
+_sym_db.RegisterMessage(PostByIdRequest)
+
+PostByAuthorRequest = _reflection.GeneratedProtocolMessageType('PostByAuthorRequest', (_message.Message,), dict(
+  DESCRIPTOR = _POSTBYAUTHORREQUEST,
+  __module__ = 'posts_pb2'
+  # @@protoc_insertion_point(class_scope:PostByAuthorRequest)
+  ))
+_sym_db.RegisterMessage(PostByAuthorRequest)
 
 PostRequest = _reflection.GeneratedProtocolMessageType('PostRequest', (_message.Message,), dict(
   DESCRIPTOR = _POSTREQUEST,
@@ -142,6 +253,13 @@ Post = _reflection.GeneratedProtocolMessageType('Post', (_message.Message,), dic
   # @@protoc_insertion_point(class_scope:Post)
   ))
 _sym_db.RegisterMessage(Post)
+
+Posts = _reflection.GeneratedProtocolMessageType('Posts', (_message.Message,), dict(
+  DESCRIPTOR = _POSTS,
+  __module__ = 'posts_pb2'
+  # @@protoc_insertion_point(class_scope:Posts)
+  ))
+_sym_db.RegisterMessage(Posts)
 
 
 try:
@@ -167,11 +285,31 @@ try:
           request_serializer=PostRequest.SerializeToString,
           response_deserializer=Post.FromString,
           )
+      self.GetPostById = channel.unary_unary(
+          '/PostService/GetPostById',
+          request_serializer=PostByIdRequest.SerializeToString,
+          response_deserializer=Post.FromString,
+          )
+      self.GetPostsByAuthor = channel.unary_stream(
+          '/PostService/GetPostsByAuthor',
+          request_serializer=PostByAuthorRequest.SerializeToString,
+          response_deserializer=Post.FromString,
+          )
 
 
   class PostServiceServicer(object):
 
     def CreatePost(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def GetPostById(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def GetPostsByAuthor(self, request, context):
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
@@ -182,6 +320,16 @@ try:
         'CreatePost': grpc.unary_unary_rpc_method_handler(
             servicer.CreatePost,
             request_deserializer=PostRequest.FromString,
+            response_serializer=Post.SerializeToString,
+        ),
+        'GetPostById': grpc.unary_unary_rpc_method_handler(
+            servicer.GetPostById,
+            request_deserializer=PostByIdRequest.FromString,
+            response_serializer=Post.SerializeToString,
+        ),
+        'GetPostsByAuthor': grpc.unary_stream_rpc_method_handler(
+            servicer.GetPostsByAuthor,
+            request_deserializer=PostByAuthorRequest.FromString,
             response_serializer=Post.SerializeToString,
         ),
     }
@@ -198,6 +346,10 @@ try:
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
     def CreatePost(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def GetPostById(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def GetPostsByAuthor(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
   class BetaPostServiceStub(object):
@@ -209,6 +361,11 @@ try:
     def CreatePost(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     CreatePost.future = None
+    def GetPostById(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    GetPostById.future = None
+    def GetPostsByAuthor(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
 
 
   def beta_create_PostService_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
@@ -219,12 +376,18 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
       ('PostService', 'CreatePost'): PostRequest.FromString,
+      ('PostService', 'GetPostById'): PostByIdRequest.FromString,
+      ('PostService', 'GetPostsByAuthor'): PostByAuthorRequest.FromString,
     }
     response_serializers = {
       ('PostService', 'CreatePost'): Post.SerializeToString,
+      ('PostService', 'GetPostById'): Post.SerializeToString,
+      ('PostService', 'GetPostsByAuthor'): Post.SerializeToString,
     }
     method_implementations = {
       ('PostService', 'CreatePost'): face_utilities.unary_unary_inline(servicer.CreatePost),
+      ('PostService', 'GetPostById'): face_utilities.unary_unary_inline(servicer.GetPostById),
+      ('PostService', 'GetPostsByAuthor'): face_utilities.unary_stream_inline(servicer.GetPostsByAuthor),
     }
     server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
     return beta_implementations.server(method_implementations, options=server_options)
@@ -238,12 +401,18 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
       ('PostService', 'CreatePost'): PostRequest.SerializeToString,
+      ('PostService', 'GetPostById'): PostByIdRequest.SerializeToString,
+      ('PostService', 'GetPostsByAuthor'): PostByAuthorRequest.SerializeToString,
     }
     response_deserializers = {
       ('PostService', 'CreatePost'): Post.FromString,
+      ('PostService', 'GetPostById'): Post.FromString,
+      ('PostService', 'GetPostsByAuthor'): Post.FromString,
     }
     cardinalities = {
       'CreatePost': cardinality.Cardinality.UNARY_UNARY,
+      'GetPostById': cardinality.Cardinality.UNARY_UNARY,
+      'GetPostsByAuthor': cardinality.Cardinality.UNARY_STREAM,
     }
     stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
     return beta_implementations.dynamic_stub(channel, 'PostService', cardinalities, options=stub_options)

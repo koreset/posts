@@ -17,11 +17,31 @@ class PostServiceStub(object):
         request_serializer=posts__pb2.PostRequest.SerializeToString,
         response_deserializer=posts__pb2.Post.FromString,
         )
+    self.GetPostById = channel.unary_unary(
+        '/PostService/GetPostById',
+        request_serializer=posts__pb2.PostByIdRequest.SerializeToString,
+        response_deserializer=posts__pb2.Post.FromString,
+        )
+    self.GetPostsByAuthor = channel.unary_stream(
+        '/PostService/GetPostsByAuthor',
+        request_serializer=posts__pb2.PostByAuthorRequest.SerializeToString,
+        response_deserializer=posts__pb2.Post.FromString,
+        )
 
 
 class PostServiceServicer(object):
 
   def CreatePost(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetPostById(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetPostsByAuthor(self, request, context):
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -32,6 +52,16 @@ def add_PostServiceServicer_to_server(servicer, server):
       'CreatePost': grpc.unary_unary_rpc_method_handler(
           servicer.CreatePost,
           request_deserializer=posts__pb2.PostRequest.FromString,
+          response_serializer=posts__pb2.Post.SerializeToString,
+      ),
+      'GetPostById': grpc.unary_unary_rpc_method_handler(
+          servicer.GetPostById,
+          request_deserializer=posts__pb2.PostByIdRequest.FromString,
+          response_serializer=posts__pb2.Post.SerializeToString,
+      ),
+      'GetPostsByAuthor': grpc.unary_stream_rpc_method_handler(
+          servicer.GetPostsByAuthor,
+          request_deserializer=posts__pb2.PostByAuthorRequest.FromString,
           response_serializer=posts__pb2.Post.SerializeToString,
       ),
   }

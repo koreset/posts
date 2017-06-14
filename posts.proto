@@ -3,6 +3,16 @@ import "google/protobuf/timestamp.proto";
 
 service PostService {
     rpc CreatePost(PostRequest) returns (Post){}
+    rpc GetPostById(PostByIdRequest) returns (Post){}
+    rpc GetPostsByAuthor(PostByAuthorRequest) returns (stream Post){}
+}
+
+message PostByIdRequest{
+    string id = 1;
+}
+
+message PostByAuthorRequest{
+    string author = 1;
 }
 
 message PostRequest{
@@ -16,4 +26,8 @@ message Post{
     string text = 3;
     google.protobuf.Timestamp creationdate = 4;
     google.protobuf.Timestamp lastmodified = 5;
+}
+
+message Posts{
+    repeated Post posts = 1;
 }

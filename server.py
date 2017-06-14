@@ -1,4 +1,4 @@
-from uuid import uuid1
+from uuid import uuid1, UUID
 
 import grpc
 from concurrent import futures
@@ -19,6 +19,25 @@ class PostServicer(posts_pb2_grpc.PostServiceServicer):
         cpost.lastmodified = datetime.now()
         cpost.save()
 
+        post = self.map_to_post(cpost)
+
+        return post
+
+    def GetPostById(self, request, context):
+        cpost = ConcretePost.objects.filter(id=UUID(request.id)).first()
+        print dict(cpost)
+
+        post = self.map_to_post(cpost)
+        return post
+
+    def GetPostsByAuthor(self, request, context):
+        cposts = ConcretePost.objects.filter(author=request.author)
+
+        for cpost in cposts:
+            post = self.map_to_post(cpost)
+            yield post
+
+    def map_to_post(self, cpost):
         post = Post()
         post.author = cpost.author
         post.id = str(cpost.id)
@@ -27,6 +46,7 @@ class PostServicer(posts_pb2_grpc.PostServiceServicer):
         post.text = cpost.text
 
         return post
+
 
 
 def serve():
